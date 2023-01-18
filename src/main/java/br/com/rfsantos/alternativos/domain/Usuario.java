@@ -1,6 +1,7 @@
 package br.com.rfsantos.alternativos.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,50 +9,66 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="usuario")
+@Table(name="ts01_usuario")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="re")
 	private String id;
-	@Column(name="nome_acesso")
+	//re character varying(6) COLLATE pg_catalog."default" NOT NULL,  
+	
+	@Column(name="usuario")
 	private String nomeAcesso;
+	//usuario character varying(15) COLLATE pg_catalog."default",
+	
 	private String senha;
+	//senha character varying(15) COLLATE pg_catalog."default",
+	
+	@Column(name="nome")	
 	private String nome;
-	@Column(columnDefinition = "bpchar", length=1)
+	//nome character varying(60) COLLATE pg_catalog."default",
+	
+	@Column(name="status", columnDefinition = "bpchar", length=1)
 	private String condicaoId;
-	@Column(columnDefinition = "bpchar", length=1)
+	//status character(1) COLLATE pg_catalog."default",
+	
+	@Column(name="perfil", columnDefinition = "bpchar", length=1)
 	private String perfil;
+	//perfil character(1) COLLATE pg_catalog."default",
+
+	
+	@Column(name="local")	
 	private String setor_id;
-	public Usuario() {
-
-	}
-
-	public Usuario(String id, String nomeAcesso, String senha, String nome, String condicao, String perfil, String local) {
-		super();
-		this.id = id;
-		this.setor_id = local;
-		this.nome = nome;
-		this.perfil = perfil;
-		this.senha = senha;
-		this.condicaoId = condicao;
-		this.nomeAcesso = nomeAcesso;
-	}
-
-
-	public Usuario(Usuario usuario) {
-		super();
-		this.id = usuario.getId();
-		this.setor_id = usuario.getSetor();
-		this.nome = usuario.getNome();
-		this.perfil = usuario.getPerfil();
-		this.senha = usuario.getSenha();
-		this.condicaoId = usuario.getCondicao();
-		this.nomeAcesso = usuario.getNomeAcesso();
-	}
-
+	//local character varying(5) COLLATE pg_catalog."default",
+		 
 	public String getId() {
 		return id;
+	}
+
+	
+	public Usuario(Usuario usuario) {
+		super();
+		this.id = usuario.id;
+		this.nomeAcesso = usuario.nomeAcesso;
+		this.senha = usuario.senha;
+		this.nome = usuario.nome;
+		this.condicaoId = usuario.condicaoId;
+		this.perfil = usuario.perfil;
+		this.setor_id = usuario.setor_id;
+	}
+
+	
+	public Usuario(String id, String nomeAcesso, String senha, String nome, String condicaoId, String perfil,
+			String setor_id) {
+		super();
+		this.id = id;
+		this.nomeAcesso = nomeAcesso;
+		this.senha = senha;
+		this.nome = nome;
+		this.condicaoId = condicaoId;
+		this.perfil = perfil;
+		this.setor_id = setor_id;
 	}
 
 
@@ -120,28 +137,30 @@ public class Usuario implements Serializable {
 	}
 
 
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+		return Objects.hash(id);
 	}
+
 
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if ((obj == null) || (getClass() != obj.getClass()))
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+		return Objects.equals(id, other.id);
 	}
+
+
+	
+
+
+	
 
 }

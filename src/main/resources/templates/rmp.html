@@ -46,14 +46,7 @@ xmlns:th="http://www.thymeleaf.org">
 			<tbody>				
 				<tr th:each="proddefeito : ${proddefeitos}">						
 					<td th:text="${proddefeito.id}"/></td>
-					<td th:text="${proddefeito.producaoId}"  /></td>
-					<td th:text= "${proddefeito.defeitoId}" /></td>						
-					<td th:text="${proddefeito.dt}"  /></td>
-					<td th:text="${proddefeito.hr}" /></td>						
-					<td th:text="${proddefeito.serie}" /></td>
-					<td th:text="${proddefeito.condicaoId}" /></td>						
-					<td th:text="${proddefeito.analise}" /></td>
-					<td th:text="${proddefeito.reparo}" /></td>						 
+										 
 				</tr>	
 				<form class="form-inline" method="POST" th:object="${proddefeito}" th:action="@{/proddefeitos}" style="margin: 1px 0">
 					<tr>						

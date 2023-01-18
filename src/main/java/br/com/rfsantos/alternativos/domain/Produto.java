@@ -1,6 +1,7 @@
 package br.com.rfsantos.alternativos.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,124 +9,159 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="produto")
+@Table(name="ts01_produto")
 public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id", columnDefinition = "bpchar", length=15)
+	@Column(name="ts01_codigo", columnDefinition = "bpchar", length=15)
 	private String id;
-
-	@Column(name="ean")
-	private String ean;
-
-	@Column(name="desc_esp")
-	private String descEsp;
-
-	@Column(name="descricao")
+	//ts01_codigo character varying(15) COLLATE pg_catalog."default" NOT NULL,
+    
+	@Column(name="ts01_descricao")
 	private String descricao;
-
-	@Column(name="grupo_id")
-	private String grupoId;
-
-	@Column(name="narrativa")
+	//ts01_descricao character varying(30) COLLATE pg_catalog."default",
+    
+	@Column(name="ts01_narrativa")
 	private String narrativa;
-
-	@Column(name="unidade")
+	//ts01_narrativa character varying(255) COLLATE pg_catalog."default",
+    
+	@Column(name="ts01_unidade")
 	private String unidade;
+	//ts01_unidade character varying(2) COLLATE pg_catalog."default",
+    
+    @Column(name="ts01_desc_esp")
+	private String descEsp;
+    //ts01_desc_esp character varying(80) COLLATE pg_catalog."default",
+    
+	@Column(name="ts01_grupo")
+	private String grupoId;
+	//ts01_grupo character varying(4) COLLATE pg_catalog."default",
+    
+    
+    @Column(name="ts01_cod_barras")
+	private String ean;
+	//ts01_cod_barras character varying(15) COLLATE pg_catalog."default",
+   
+    @Column(name="td01_tipo")
+    private String tipo;
+	//td01_tipo character varying(4) COLLATE pg_catalog."default",
 
 	public Produto() {
 	}
 
-	public Produto(String id, String ean, String descEsp, String descricao, String grupoId, String narrativa,
-			String unidade) {
+	public Produto(String id, String descricao, String narrativa, String unidade, String descEsp, String grupoId,
+			String ean, String tipo) {
+		super();
 		this.id = id;
-		this.ean = ean;
-		this.descEsp = descEsp;
 		this.descricao = descricao;
-		this.grupoId = grupoId;
 		this.narrativa = narrativa;
 		this.unidade = unidade;
+		this.descEsp = descEsp;
+		this.grupoId = grupoId;
+		this.ean = ean;
+		this.tipo = tipo;
 	}
 
 	public String getId() {
 		return id;
 	}
 
+
 	public void setId(String id) {
 		this.id = id;
 	}
 
-	public String getEan() {
-		return ean;
-	}
-
-	public void setEan(String ean) {
-		this.ean = ean;
-	}
-
-	public String getDescEsp() {
-		return descEsp;
-	}
-
-	public void setDescEsp(String descEsp) {
-		this.descEsp = descEsp;
-	}
 
 	public String getDescricao() {
 		return descricao;
 	}
 
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
-	public String getGrupo() {
-		return grupoId;
-	}
-
-	public void setGrupo(String grupo) {
-		this.grupoId = grupo;
-	}
 
 	public String getNarrativa() {
 		return narrativa;
 	}
 
+
 	public void setNarrativa(String narrativa) {
 		this.narrativa = narrativa;
 	}
+
 
 	public String getUnidade() {
 		return unidade;
 	}
 
+
 	public void setUnidade(String unidade) {
 		this.unidade = unidade;
 	}
 
+
+	public String getDescEsp() {
+		return descEsp;
+	}
+
+
+	public void setDescEsp(String descEsp) {
+		this.descEsp = descEsp;
+	}
+
+
+	public String getGrupoId() {
+		return grupoId;
+	}
+
+
+	public void setGrupoId(String grupoId) {
+		this.grupoId = grupoId;
+	}
+
+
+	public String getEan() {
+		return ean;
+	}
+
+
+	public void setEan(String ean) {
+		this.ean = ean;
+	}
+
+
+	public String getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+		return Objects.hash(id);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if ((obj == null) || (getClass() != obj.getClass()))
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+		return Objects.equals(id, other.id);
 	}
+
+	
 
 
 }

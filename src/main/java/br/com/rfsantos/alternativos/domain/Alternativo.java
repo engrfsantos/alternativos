@@ -9,51 +9,47 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="produto")
+@Table(name="td01_alternativo")
 public class Alternativo implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+		
 	@Id
-	@Column(name="codigo")
-	private String codigo;
-
-	@Column(name="descbreve")
-	private String descbreve;
-
-	@Column(name="obs")
-	private String obs;
-
-	@Column(name="alternativo")
-	private String alternativo;
-
-	@Column(name="status")
-	private String status;
+	@Column(name="td01_codigo")
+	private String id;
+	//td01_codigo character varying(15) COLLATE pg_catalog."default" NOT NULL,
 	
-	@Column(name="nivel")
-	private Integer  nivel;
+	
+	@Column(name="td01_alternativo")
+	private String alternativo;
+	//td01_alternativo character varying(15) COLLATE pg_catalog."default" NOT NULL,
+	
+	@Column(name="td01_descricao")
+	private String descricao;
+	//td01_descricao text COLLATE pg_catalog."default",
+	
+	@Column(name="td01_nivel")
+	private String  nivel;
+	//td01_nivel character varying(6) COLLATE pg_catalog."default" NOT NULL,
+	
+	
+	public Alternativo() {
 
-	public String getCodigo() {
-		return codigo;
+	}
+	
+	public Alternativo(String id, String alternativo, String descricao, String nivel) {
+		super();
+		this.id = id;
+		this.alternativo = alternativo;
+		this.descricao = descricao;
+		this.nivel = nivel;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public String getId() {
+		return id;
 	}
-
-	public String getDescbreve() {
-		return descbreve;
-	}
-
-	public void setDescbreve(String descbreve) {
-		this.descbreve = descbreve;
-	}
-
-	public String getObs() {
-		return obs;
-	}
-
-	public void setObs(String obs) {
-		this.obs = obs;
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getAlternativo() {
@@ -64,25 +60,25 @@ public class Alternativo implements Serializable {
 		this.alternativo = alternativo;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
-	public Integer getNivel() {
+	public String getNivel() {
 		return nivel;
 	}
 
-	public void setNivel(Integer nivel) {
+	public void setNivel(String nivel) {
 		this.nivel = nivel;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(alternativo, codigo, descbreve, nivel, obs, status);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -94,9 +90,8 @@ public class Alternativo implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Alternativo other = (Alternativo) obj;
-		return Objects.equals(alternativo, other.alternativo) && Objects.equals(codigo, other.codigo)
-				&& Objects.equals(descbreve, other.descbreve) && Objects.equals(nivel, other.nivel)
-				&& Objects.equals(obs, other.obs) && Objects.equals(status, other.status);
+		return Objects.equals(id, other.id);
 	}
- 
+	   
+	
 }

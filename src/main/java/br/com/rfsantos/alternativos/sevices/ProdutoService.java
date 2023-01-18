@@ -24,8 +24,8 @@ public class ProdutoService {
 		return this.produto;
 	}
 
-	public Produto findById(String codigo){
-		Optional <Produto> obj = repo.findById(codigo);
+	public Produto findById(String id){
+		Optional <Produto> obj = repo.findById(id);
 		return obj.orElse(null);
 	}
 

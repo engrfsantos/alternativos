@@ -17,7 +17,7 @@ public class rmp implements Serializable {
 	//id integer NOT NULL DEFAULT nextval('td01_rmp_id_seq'::regclass),
 	@Id
 	@Column(name="id")
-	private long id;
+	private Integer id;
 
 	//ean character varying(13) COLLATE pg_catalog."default",
 	@Column(name="ean")
@@ -37,25 +37,25 @@ public class rmp implements Serializable {
 
 	
 	//descr character varying(1024) COLLATE pg_catalog."default",
-	@Column(name="desc")
+	@Column(name="descr")
 	private String descr;
 
 	//status integer,
 	@Column(name="status")
-	private String status;
+	private Integer status;
 	
     //imagem numeric(19,0),
-	@Column(name="imagem")
-	private byte[]  imagem;
+	@Column(name="imagem", columnDefinition = "NUMERIC(19,0)")
+	private Long  imagem;
 
 	public rmp() {
 	}
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -99,29 +99,25 @@ public class rmp implements Serializable {
 		this.descr = descr;
 	}
 
-	public String getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
-	public byte[] getImagem() {
+	public Long getImagem() {
 		return imagem;
 	}
 
-	public void setImagem(byte[] imagem) {
+	public void setImagem(Long imagem) {
 		this.imagem = imagem;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + Arrays.hashCode(imagem);
-		result = prime * result + Objects.hash(descbreve, descr, ean, grupo, id, obs, status);
-		return result;
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -133,16 +129,8 @@ public class rmp implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		rmp other = (rmp) obj;
-		return Objects.equals(descbreve, other.descbreve) && Objects.equals(descr, other.descr)
-				&& Objects.equals(ean, other.ean) && Objects.equals(grupo, other.grupo) && id == other.id
-				&& Arrays.equals(imagem, other.imagem) && Objects.equals(obs, other.obs)
-				&& Objects.equals(status, other.status);
+		return Objects.equals(id, other.id);
 	}
 
 	
-
-	
-
-	
-
 }
