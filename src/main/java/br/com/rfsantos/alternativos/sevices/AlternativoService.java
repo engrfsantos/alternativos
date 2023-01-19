@@ -32,5 +32,11 @@ public class AlternativoService {
 	}
 
 
+	public Object listar(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

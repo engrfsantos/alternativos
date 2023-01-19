@@ -33,6 +33,7 @@ public class AlternativosResource {
 	@RequestMapping(value="/alternativos/{id}", method=RequestMethod.GET)
 	public ModelAndView lancamentoId (@PathVariable String id)  {
 		ModelAndView modelAndView = new ModelAndView("Alternativos");
+		modelAndView.addObject("alternativos", alternativosService.listar(id));
 		return modelAndView;
 		}
 

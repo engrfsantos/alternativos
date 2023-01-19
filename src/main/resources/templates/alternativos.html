@@ -28,12 +28,12 @@ xmlns:th="http://www.thymeleaf.org">
 	
 		<div class="panel panel-default" style="margin: 10px">
 		<div class="panel-heading">
-			<form class="form-inline" method="POST" th:object="${alternativo}" th:action="@{/alternativos}"   style="margin: 20px 0">
+			<form class="form-inline" method="GET" th:object="${alternativo}" th:action="@{/alternativos/}"  style="margin: 20px 0">
 				<table>
 					<tr>
-						<td><input id="inputLeitura" name="leitura" type="text" class="form-control" placeholder="Leitura" style="width: 250px; "/></td>
+						<td><input id="id" name="id" type="text" class="form-control" placeholder="Codigo" style="width: 250px; "/></td>
 						<td> </td>
-						<td> <button type="submit" name="condicao" value="1" class="btn btn-primary" style="background: green; height: 30px;">Buscar</button> </td>				
+						<td> <button type="submit" class="btn btn-primary" style="background: green; height: 30px;">Buscar</button> </td>				
 						</tr>
 				</table>		
 			</form>
@@ -55,9 +55,9 @@ xmlns:th="http://www.thymeleaf.org">
 		<tbody>			
 				<tr th:each="alternativo : ${alternativos}">
 				<td ht:text="${alternativo.id}"><a th:text="${alternativo.id}"></a></td>								
-				<td ht:text="${alternativo.td01_alternativo}"><a th:text="${alternativo.td01_alternativo}"></a></td>	
-				<td ht:text="${alternativo.td01_descricao}"><a th:text="${alternativo.td01_descricao}"></a></td>	
-				<td ht:text="${alternativo.td01_nivel}"><a th:text="${alternativo.td01_nivel}"></a></td>	
+				<td ht:text="${alternativo.alternativo}"><a th:text="${alternativo.alternativo}"></a></td>	
+				<td ht:text="${alternativo.descricao}"><a th:text="${alternativo.descricao}"></a></td>	
+				<td ht:text="${alternativo.nivel}"><a th:text="${alternativo.nivel}"></a></td>	
 				
 				</tr>
 		
